@@ -106,6 +106,7 @@ class EThread implements Runnable {
             String name = rt.getString("u_name");
             String sql2 = "select * from experiments where u_id="+TeacherLogon.u_id+"";
             ResultSet rt2 = st.executeQuery(sql2);
+            TeacherLogon.list.clear();
             while (rt2.next()){
                 Map<String,String> keyvalue = new HashMap<String,String>();
                 keyvalue.put("name",rt2.getString("e_name"));

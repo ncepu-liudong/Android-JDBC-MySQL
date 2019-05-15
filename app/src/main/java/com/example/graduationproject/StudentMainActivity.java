@@ -201,7 +201,7 @@ class HDBThread implements Runnable {
         Connection conn = getConnection();
         try{
             Statement st = conn.createStatement();
-            String sql = "select * from notices where e_id="+StudentMainActivity.e_id+" order by month, day, hour, minute";
+            String sql = "select * from notices where e_id="+StudentMainActivity.e_id+" order by month, day, hour, minute desc";
             ResultSet rt = st.executeQuery(sql);
             while (rt.next()){
                 StudentMainActivity.message += ""+rt.getString("month")+"月"+rt.getString("day")+"日"+rt.getString("hour")+"时"+
