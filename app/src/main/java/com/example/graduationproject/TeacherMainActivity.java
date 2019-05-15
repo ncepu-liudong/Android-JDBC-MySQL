@@ -18,6 +18,11 @@ import com.example.graduationproject.Fragment.TeacherMaterial;
 import com.example.graduationproject.Fragment.TeacherMy;
 import com.example.graduationproject.Fragment.Teachernotice;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +39,9 @@ public class TeacherMainActivity extends AppCompatActivity implements
     public static String e_id1;
     public static String u_id;
     public static int e_id;
+    public static int u_id1;
+    public static String message = "";
+    public static String m_state = "200";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +53,14 @@ public class TeacherMainActivity extends AppCompatActivity implements
         e_teacher = intent.getStringExtra("e_teacher");
         e_id1 = intent.getStringExtra("e_id");
         e_id = Integer.valueOf(e_id1).intValue();
+        u_id1 = Integer.valueOf(u_id).intValue();
+
+        GDBThread dt = new GDBThread();
+        Thread thread = new Thread(dt);
+        thread.start();
+        for (;m_state.equals("200");){
+        }
+
         InitViewPage();
         InitBottomNavigationBar();
     }
@@ -112,15 +128,7 @@ public class TeacherMainActivity extends AppCompatActivity implements
 
     @Override
     public void onTabSelected(int position) {
-//        if(position==3){
-//            Intent intent = getIntent();
-//            String user_account = intent.getStringExtra("account");
-//            Log.v("tag",user_account);
-//            Bundle bundle = new Bundle();
-//            bundle.putString("accounts",user_account);
-//            myFragment = new MyFragment();
-//            myFragment.setArguments(bundle);
-//        }
+
         viewPager.setCurrentItem(position);
     }
 
@@ -159,4 +167,46 @@ public class TeacherMainActivity extends AppCompatActivity implements
     public void onPageScrollStateChanged(int i) {
 
     }
+}
+class GDBThread implements Runnable {
+    private static String driver = DateSet.getDriver();
+    private static String url = DateSet.getUrl();
+    private static String user = DateSet.getUser();
+    private static String password = DateSet.getPassword();
+
+    public static Connection getConnection() {
+        Connection con = null;
+        try {
+            Class.forName(driver);
+            con = DriverManager.getConnection(url, user, password);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return con;
+    }
+    public void selects(){
+        Connection conn = getConnection();
+        try{
+            Statement st = conn.createStatement();
+            String sql = "select * from notices where e_id="+TeacherMainActivity.e_id+" and u_id="+TeacherMainActivity.u_id1+" order by month, day, hour, minute";
+            ResultSet rt = st.executeQuery(sql);
+            while (rt.next()){
+                TeacherMainActivity.message += ""+rt.getString("month")+"月"+rt.getString("day")+"日"+rt.getString("hour")+"时"+
+                        rt.getString("minute")+"分 \r\n"+rt.getString("n_title")+"\r\n"+rt.getString("n_content")+"\r\n";
+            }
+            conn.close();
+            st.close();
+            rt.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    @Override
+    public void run(){
+        selects();
+        TeacherMainActivity.m_state="1";
+    }
+
 }

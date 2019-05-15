@@ -12,10 +12,15 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.graduationproject.R;
+import com.example.graduationproject.TeacherMainActivity;
+import com.example.graduationproject.TeacherNewNotice;
+import com.example.graduationproject.TeacherUserInformation;
+import com.example.graduationproject.tool.IntentTools;
 
 public class Teachernotice extends Fragment {
     private TextView notice;
     private Button new_notice;
+    private static String message;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -27,13 +32,14 @@ public class Teachernotice extends Fragment {
     }
     private void init(View view){
         notice = view.findViewById(R.id.notice);
+        notice.setText(TeacherMainActivity.message);
 
 
         new_notice = view.findViewById(R.id.new_notice);
         new_notice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                IntentTools.getInstance().intent(getContext(), TeacherNewNotice.class,null);
             }
         });
     }

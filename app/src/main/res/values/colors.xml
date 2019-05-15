@@ -102,7 +102,7 @@
     <color name="olive">#808000</color> <!--橄榄色 -->
     <color name="purple">#800080</color> <!--紫色 -->
     <color name="maroon">#800000</color> <!--粟色 -->
-    <color name="aquamarine">#7fffd4</color> <!--碧绿色 -->
+    <color name="aquamarine">#7FFFD4</color> <!--碧绿色 -->
     <color name="chartreuse">#7FFF00</color> <!--黄绿色 -->
     <color name="lawngreen">#7CFC00</color> <!--草绿色 -->
     <color name="mediumslateblue">#7B68EE</color> <!--中暗蓝色 -->

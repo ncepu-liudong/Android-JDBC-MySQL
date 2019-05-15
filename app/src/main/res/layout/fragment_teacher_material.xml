@@ -9,6 +9,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Material" />
+        android:text="暂无材料"
+        android:textAlignment="center"
+        android:layout_marginTop="80dp"
+        android:textColor="@color/black"
+        android:textSize="24sp" />
 
 </FrameLayout>

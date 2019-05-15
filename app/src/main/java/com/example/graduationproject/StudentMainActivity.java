@@ -18,6 +18,12 @@ import com.example.graduationproject.Fragment.StudentExperiment;
 import com.example.graduationproject.Fragment.StudentMaterial;
 import com.example.graduationproject.Fragment.StudentMy;
 import com.example.graduationproject.Fragment.StudentNotice;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +42,8 @@ public class StudentMainActivity extends AppCompatActivity implements
     public static int e_id;
     public static int u_id1;
     public static String s_name;
+    public static String message = "";
+    public static String m_state = "200";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +56,14 @@ public class StudentMainActivity extends AppCompatActivity implements
         e_teacher = intent.getStringExtra("e_teacher");
         e_id1 = intent.getStringExtra("e_id");
         e_id = Integer.valueOf(e_id1).intValue();
-        Log.i("e_id",e_id1);
         s_name = intent.getStringExtra("s_name");
+
+        HDBThread dt = new HDBThread();
+        Thread thread = new Thread(dt);
+        thread.start();
+        for (;m_state.equals("200");){
+        }
+
         InitViewPage();
         InitBottomNavigationBar();
     }
@@ -164,4 +178,46 @@ public class StudentMainActivity extends AppCompatActivity implements
     public void onPageScrollStateChanged(int i) {
 
     }
+}
+class HDBThread implements Runnable {
+    private static String driver = DateSet.getDriver();
+    private static String url = DateSet.getUrl();
+    private static String user = DateSet.getUser();
+    private static String password = DateSet.getPassword();
+
+    public static Connection getConnection() {
+        Connection con = null;
+        try {
+            Class.forName(driver);
+            con = DriverManager.getConnection(url, user, password);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return con;
+    }
+    public void selects(){
+        Connection conn = getConnection();
+        try{
+            Statement st = conn.createStatement();
+            String sql = "select * from notices where e_id="+StudentMainActivity.e_id+" order by month, day, hour, minute";
+            ResultSet rt = st.executeQuery(sql);
+            while (rt.next()){
+                StudentMainActivity.message += ""+rt.getString("month")+"月"+rt.getString("day")+"日"+rt.getString("hour")+"时"+
+                        rt.getString("minute")+"分 \r\n"+rt.getString("n_title")+"\r\n"+rt.getString("n_content")+"\r\n";
+            }
+            conn.close();
+            st.close();
+            rt.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    @Override
+    public void run(){
+        selects();
+        StudentMainActivity.m_state="1";
+    }
+
 }
