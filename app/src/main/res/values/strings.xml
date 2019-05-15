@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">实验管理系统</string>
+    <string name="back">返回</string>
+    <string name="login">用户登录</string>
+    <string name="login_hint_userName">请输入账号</string>
+    <string name="forget_password">忘记密码--></string>
+    <string name="login_hint_password">请输入密码</string>
+    <string name="button_login">登陆</string>
+    <string name="change_password">修改密码</string>
+    <string name="login_name">请输入用户姓名</string>
+    <string name="sure_password">请确认密码</string>
+    <string name="sure_change">确认修改</string>
+    <string name="success_change">密码修改成功!</string>
+    <string name="return_login">返回登录</string>
+    <string name="personal_information">个人信息</string>
+    <string name="name">姓 名</string>
+    <string name="account">账 号</string>
+    <string name="school">学 校</string>
+    <string name="identity">身 份</string>
+    <string name="ncepu">华北电力大学（保定）</string>
+    <string name="user">用  户</string>
+    <string name="experiment">实  验</string>
+    <string name="create_experiment">创建实验</string>
+    <string name="new_experiment">创建新的实验</string>
+    <string name="score_experiment">实验成绩</string>
+    <string name="sign_in">签  到</string>
+    <string name="e_name">实验名称:</string>
+    <string name="e_teacher">指导教师:</string>
+    <string name="e_number">学生人数:</string>
+    <string name="e_account">实验编号:</string>
+    <string name="e_update">修改实验</string>
+    <string name="e_delete">删除实验</string>
+    <string name="a_name">管理员</string>
+    <string name="a_teacherlist">教师列表</string>
+    <string name="a_studentlist">学生列表</string>
+    <string name="a_userfind">用户查找</string>
+    <string name="a_finduser">查找用户</string>
+    <string name="a_newuser">新增用户</string>
+    <string name="u_message">用户信息</string>
+    <string name="myexperiment">我的实验</string>
+    <string name="n_experiment">请输入实验名称</string>
+    <string name="n_number">请输入实验人数</string>
+    <string name="n_group"> 实验是否分组</string>
+    <string name="n_g_number">请输入分组人数</string>
+    <string name="j_group">加入分组</string>
+    <string name="j_tishi">请输入分组的号码</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

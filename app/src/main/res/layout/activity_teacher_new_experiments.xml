@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TeacherNewExperiments"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:text="@string/create_experiment"
+        android:textSize="30sp" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        app:srcCompat="@drawable/experiment" />
+
+
+    <EditText
+        android:id="@+id/experiment_name"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lines="1"
+        android:inputType="text"
+        android:hint="@string/n_experiment"/>
+    <EditText
+        android:id="@+id/experiment_number"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lines="1"
+        android:inputType="number"
+        android:hint="@string/n_number"/>
+
+    <Switch
+        android:id="@+id/experiment_group"
+        android:layout_width="183dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:text="@string/n_group"
+        android:textOn="实验不分组"
+        android:textOff="实验分组"
+        android:checked="false"
+        android:textAlignment="textStart"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/experiment_g_number"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lines="1"
+        android:inputType="number"
+        android:hint="@string/n_g_number"/>
+    <Button
+        android:id="@+id/e_create"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textColor="#FFF"
+        android:text="@string/create_experiment"
+        android:background="@drawable/button_style"/>
+
+
+</LinearLayout>

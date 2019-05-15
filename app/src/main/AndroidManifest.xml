@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.graduationproject">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".StudentExperimentScore"></activity>
+        <activity android:name=".TeacherExperimentSetScore" />
+        <activity android:name=".TeacherExperimentCheck" />
+        <activity android:name=".StudentAddGroup" />
+        <activity android:name=".StudentExperimentMember" />
+        <activity android:name=".TeacherExperimentMember" />
+        <activity android:name=".TeacherSignIn" />
+        <activity android:name=".StudentSignIn" />
+        <activity android:name=".StudentUserInformation" />
+        <activity android:name=".StudentMainActivity" />
+        <activity android:name=".StudentNewExperiment" />
+        <activity android:name=".TeacherUserInformation" />
+        <activity android:name=".TeacherNewExperiments" />
+        <activity android:name=".TeacherMainActivity" />
+        <activity android:name=".StudentLogon" />
+        <activity android:name=".TeacherLogon" />
+        <activity android:name=".AdminModify" />
+        <activity android:name=".AdminAddUsers" />
+        <activity android:name=".AdminFindUser" />
+        <activity android:name=".AdminTeacherList" />
+        <activity android:name=".AdminStudentList" />
+        <activity android:name=".Admin_List_Activity" />
+        <activity android:name=".Update_password_success" />
+        <activity android:name=".ForgetActivity" />
+        <activity android:name=".LogonActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
