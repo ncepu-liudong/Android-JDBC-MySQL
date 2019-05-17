@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ public class AdminAddUsers extends AppCompatActivity {
     private ArrayAdapter adapter;
     private Spinner spinner;
     private Button u_create;
+    private ImageButton returns;
     private EditText u_name;
     private EditText u_account;
     private EditText u_password;
@@ -62,6 +64,7 @@ public class AdminAddUsers extends AppCompatActivity {
         u_account = findViewById(R.id.user_account);
         u_password = findViewById(R.id.password);
         u_s_password = findViewById(R.id.sure_password);
+        returns = findViewById(R.id.returns);
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -83,6 +86,14 @@ public class AdminAddUsers extends AppCompatActivity {
                     u_password.setText("");
                     u_s_password.setText("");
                 }
+            }
+        });
+        returns.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminAddUsers.this,Admin_List_Activity.class);
+                startActivity(intent);
+                AdminAddUsers.this.finish();
             }
         });
     }

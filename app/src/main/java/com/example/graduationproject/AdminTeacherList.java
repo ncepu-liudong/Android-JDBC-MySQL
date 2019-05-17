@@ -25,6 +25,7 @@ public class AdminTeacherList extends AppCompatActivity {
     private ListView listView;
     private ImageButton new_user;
     private SimpleAdapter adapter;
+    private ImageButton returns;
     protected static String u_account;
     protected static String u_name;
     protected static String u_identity;
@@ -42,6 +43,7 @@ public class AdminTeacherList extends AppCompatActivity {
         setContentView(R.layout.activity_admin_teacher_list);
         listView = findViewById(R.id.teacher_item);
         new_user = findViewById(R.id.new_user);
+        returns = findViewById(R.id.returns);
         String s = "@string/school";
         TDBThread dt = new TDBThread();
         Thread thread = new Thread(dt);
@@ -71,6 +73,14 @@ public class AdminTeacherList extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AdminTeacherList.this,AdminAddUsers.class);
+                startActivity(intent);
+                AdminTeacherList.this.finish();
+            }
+        });
+        returns.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminTeacherList.this,Admin_List_Activity.class);
                 startActivity(intent);
                 AdminTeacherList.this.finish();
             }

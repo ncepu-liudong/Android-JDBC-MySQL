@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +19,7 @@ public class AdminFindUser extends AppCompatActivity {
 
     private TextView user_account;
     private Button finduser;
+    private ImageButton returns;
     protected static String u_id;
     protected static String u_name;
     protected static String u_identity;
@@ -32,6 +34,7 @@ public class AdminFindUser extends AppCompatActivity {
     private void init(){
         user_account = findViewById(R.id.user_account);
         finduser = findViewById(R.id.finduser);
+        returns = findViewById(R.id.returns);
         finduser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,6 +55,14 @@ public class AdminFindUser extends AppCompatActivity {
                     startActivity(intent);
                     AdminFindUser.this.finish();
                 }
+            }
+        });
+        returns.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminFindUser.this,Admin_List_Activity.class);
+                startActivity(intent);
+                AdminFindUser.this.finish();
             }
         });
     }

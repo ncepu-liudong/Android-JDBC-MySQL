@@ -24,13 +24,13 @@ public class AdminStudentList extends AppCompatActivity {
 
     private ListView listView;
     private ImageButton new_user;
+    private ImageButton returns;
     private SimpleAdapter adapter;
     protected static String u_account;
     protected static String u_name;
     protected static String u_identity;
     protected static String u_id="3";
     protected static String u_state="200";
-
     protected static List<Map<String, ?>> list = new ArrayList<Map<String, ?>>();
     protected static int[] to = new int[]{R.id.u_name,R.id.u_account,R.id.u_identity};
 
@@ -40,6 +40,7 @@ public class AdminStudentList extends AppCompatActivity {
         setContentView(R.layout.activity_admin_student_list);
         listView = findViewById(R.id.student_item);
         new_user = findViewById(R.id.new_user);
+        returns = findViewById(R.id.returns);
         SDBThread dt = new SDBThread();
         Thread thread = new Thread(dt);
         thread.start();
@@ -69,6 +70,14 @@ public class AdminStudentList extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AdminStudentList.this,AdminAddUsers.class);
+                startActivity(intent);
+                AdminStudentList.this.finish();
+            }
+        });
+        returns.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminStudentList.this,Admin_List_Activity.class);
                 startActivity(intent);
                 AdminStudentList.this.finish();
             }
