@@ -33,14 +33,17 @@ public class Admin_List_Activity extends AppCompatActivity implements View.OnCli
             case R.id.a_studentlist:
                 intent = new Intent(Admin_List_Activity.this,AdminStudentList.class);
                 startActivity(intent);
+                Admin_List_Activity.this.finish();
                 break;
             case R.id.a_teacherlist:
                 intent = new Intent(Admin_List_Activity.this,AdminTeacherList.class);
                 startActivity(intent);
+                Admin_List_Activity.this.finish();
                 break;
             case R.id.a_userfind:
                 intent = new Intent(Admin_List_Activity.this,AdminFindUser.class);
                 startActivity(intent);
+                Admin_List_Activity.this.finish();
                 break;
         }
     }

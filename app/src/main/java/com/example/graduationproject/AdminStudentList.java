@@ -62,7 +62,6 @@ public class AdminStudentList extends AppCompatActivity {
                 intent.putExtra("account",u_account);
                 intent.putExtra("identity",u_identity);
                 startActivity(intent);
-                AdminStudentList.list.clear();
                 AdminStudentList.this.finish();
             }
         });
@@ -71,6 +70,7 @@ public class AdminStudentList extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(AdminStudentList.this,AdminAddUsers.class);
                 startActivity(intent);
+                AdminStudentList.this.finish();
             }
         });
     }

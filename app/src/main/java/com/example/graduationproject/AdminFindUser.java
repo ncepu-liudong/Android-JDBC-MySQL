@@ -50,6 +50,7 @@ public class AdminFindUser extends AppCompatActivity {
                     intent.putExtra("account",u_id);
                     intent.putExtra("identity",u_identity);
                     startActivity(intent);
+                    AdminFindUser.this.finish();
                 }
             }
         });

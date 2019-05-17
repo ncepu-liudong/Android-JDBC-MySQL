@@ -101,10 +101,9 @@ public class AdminAddUsers extends AppCompatActivity {
             Toast.makeText(AdminAddUsers.this, "创建用户成功！", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this,Admin_List_Activity.class);
             startActivity(intent);
+            AdminAddUsers.this.finish();
         }
         //Toast.makeText(AdminAddUsers.this, "创建用户成功！", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, Admin_List_Activity.class);
-        startActivity(intent);
     }
 }
 class CDBThread implements Runnable {
