@@ -1,7 +1,17 @@
 package com.example.graduationproject;
 
+import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.os.StrictMode;
+import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,12 +47,73 @@ public class LogonActivity extends AppCompatActivity implements View.OnClickList
     protected static String u_password;
     protected static String u_id;
     protected static String u_logon="200";
+    private int REQUEST_PERMISSION_CODE = 1000;
+    private AlertDialog alertDialog;
+    String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    private void requestPermission() {
+        if (Build.VERSION.SDK_INT > 23) {
+            if (ContextCompat.checkSelfPermission(LogonActivity.this,
+                    permissions[0])
+                    == PackageManager.PERMISSION_GRANTED) {
+                //授予权限
+                Log.i("requestPermission:", "用户之前已经授予了权限！");
+            } else {
+                //未获得权限
+                Log.i("requestPermission:", "未获得权限，现在申请！");
+                requestPermissions(permissions
+                        , REQUEST_PERMISSION_CODE);
+            }
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logon);
+        /*requestPermission();
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
+        builder.detectFileUriExposure();
+        showDialogTipUserRequestPermission();*/
         init();
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
+        if (requestCode == REQUEST_PERMISSION_CODE) {
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Log.i("onPermissionsResult:", "权限" + permissions[0] + "申请成功");
+                // permission was granted, yay! Do the
+                // contacts-related task you need to do.
+
+            } else {
+                Log.i("onPermissionsResult:", "用户拒绝了权限申请");
+                AlertDialog.Builder builder = new AlertDialog.Builder(LogonActivity.this);
+                builder.setTitle("permission")
+                        .setMessage("点击允许才可以使用我们的app哦")
+                        .setPositiveButton("去允许", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int id) {
+                                if (alertDialog != null && alertDialog.isShowing()) {
+                                    alertDialog.dismiss();
+                                }
+                                ActivityCompat.requestPermissions(LogonActivity.this,
+                                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                            }
+                        });
+                alertDialog = builder.create();
+                alertDialog.setCanceledOnTouchOutside(false);
+                alertDialog.show();
+                // permission denied, boo! Disable the
+                // functionality that depends on this permission.
+            }
+        }
+    }
+    private void showDialogTipUserRequestPermission() {
+        ActivityCompat.requestPermissions(this, permissions, 321);
     }
     private void initData(){
         list=new ArrayList<>();

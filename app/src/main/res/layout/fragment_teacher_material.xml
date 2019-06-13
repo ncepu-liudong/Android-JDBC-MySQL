@@ -1,18 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Fragment.TeacherMaterial">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <Button
+        android:id="@+id/signinout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="暂无材料"
-        android:textAlignment="center"
-        android:layout_marginTop="80dp"
-        android:textColor="@color/black"
-        android:textSize="24sp" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:textColor="#FFF"
+        android:text="实验签到表导出"
+        android:background="@drawable/button_style2" />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/scoreout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:textColor="#FFF"
+        android:text="实验成绩单导出"
+        android:background="@drawable/button_style2" />
+
+</LinearLayout>

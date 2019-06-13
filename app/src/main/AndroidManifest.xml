@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TeacherNewNotice"></activity>
+        <activity android:name=".TeacherLoginOut"></activity>
+        <activity android:name=".TeacherNewNotice" />
         <activity android:name=".StudentExperimentScore" />
         <activity android:name=".TeacherExperimentSetScore" />
         <activity android:name=".TeacherExperimentCheck" />

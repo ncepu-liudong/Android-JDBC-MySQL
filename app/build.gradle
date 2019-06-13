@@ -33,4 +33,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation files('libs/mysql-connector-java-5.1.47.jar')
     implementation 'com.android.support:design:28.0.0'
+    implementation files('libs/jxl-2.6.12.jar')
 }

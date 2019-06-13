@@ -2,7 +2,7 @@ package com.example.graduationproject;
 
 public class DateSet  {
     private static String driver = "com.mysql.jdbc.Driver" ;
-    private static String url = "jdbc:mysql://10.14.4.156:3306/graduationproject";
+    private static String url = "jdbc:mysql://192.168.43.229:3306/graduationproject";
     private static String user = "liudong";
     private static String password = "5692573";
 

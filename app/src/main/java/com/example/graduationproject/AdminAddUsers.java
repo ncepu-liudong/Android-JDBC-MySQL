@@ -82,7 +82,7 @@ public class AdminAddUsers extends AppCompatActivity {
                 if (userpassword.equals(usersurepassword)) {
                     insertuser();
                 } else {
-                    Toast.makeText(AdminAddUsers.this, "请两次密码输入一直！", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdminAddUsers.this, "请两次密码输入一致！", Toast.LENGTH_SHORT).show();
                     u_password.setText("");
                     u_s_password.setText("");
                 }
